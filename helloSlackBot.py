@@ -29,7 +29,7 @@ message = 'The time is '
 
 
 headers.update({'Content-Type': 'application/json'})
-headers.update({'Authorization': 'Bearer xoxp-624597919830-616113532641-616119678305-7f2a93f2e1272a28f451e11fe2b9ac12'})
+headers.update({'Authorization': 'Bearer xxxxxxxxxxxxxx'})
 
 data.update({'channel': channel})
 data.update({'text': message})
