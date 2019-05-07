@@ -7,29 +7,22 @@ headers = {}
 data = {}
 uri = 'https://slack.com/api/chat.scheduleMessage'
 
-local_time = time.localtime()
-cur_year = local_time.tm_year
-cur_month = local_time.tm_mon
-cur_day = local_time.tm_mday
-cur_hour = local_time.tm_hour
-cur_minute = local_time.tm_min
-
-
 sched_year = 2019
 sched_month = 5
-sched_day = 6
-sched_hour = 10
-sched_minute = 50
+sched_day = 7
+sched_hour = 9
+sched_minute = 40
 
 channel = 'CJ9S864SG'
-postTime = 1557222600.0
-#postTime = str((datetime.datetime(sched_year,sched_month,sched_day,sched_hour,sched_minute) - datetime.datetime(1970,1,1)).total_seconds())
-#postTime = str((datetime.datetime(cur_year,cur_month,cur_day,cur_hour,cur_minute) - datetime.datetime(1970,1,1)).total_seconds())
-message = 'The time is '
 
+#for some reason, the hour is 4 hours ahead. To schedule at 9am, have to make it 13...
+sched_time = (datetime.datetime(sched_year,sched_month,sched_day,sched_hour + 4,sched_minute) - datetime.datetime(1970,1,1)).total_seconds()
+
+postTime = sched_time
+message = "Message scheduled for " + str(sched_hour) + ":" + str(sched_minute)
 
 headers.update({'Content-Type': 'application/json'})
-headers.update({'Authorization': 'Bearer xxxxxxxxxxxxxx'})
+headers.update({'Authorization': 'Bearer XXXXXXXXXXX'})
 
 data.update({'channel': channel})
 data.update({'text': message})
